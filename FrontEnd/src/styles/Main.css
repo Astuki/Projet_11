@@ -35,7 +35,6 @@
 }
 
 .hero {
-  background-image: url("../img/bank-tree.jpeg");
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -115,7 +114,7 @@
 /* Is Used for all pages */
 @font-face {
   font-family: "Avenir-Regular";
-  src: url(../fonts/Avenir\ Regular.ttf); /* See which One "Bold" is between black & Heavy */
+  src: url("../fonts/Avenir Regular.ttf") format("truetype"); /* See which One "Bold" is between black & Heavy */
 }
 html {
   font-family: "Avenir-Regular", Helvetica, Arial, sans-serif;

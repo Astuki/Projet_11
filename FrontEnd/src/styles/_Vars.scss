@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Avenir-Regular";
-  src: url(../fonts/Avenir\ Regular.ttf); /* See which One "Bold" is between black & Heavy */
+  src: url("../fonts/Avenir\ Regular.ttf") format('truetype'); /* See which One "Bold" is between black & Heavy */
 }
 
 html {
