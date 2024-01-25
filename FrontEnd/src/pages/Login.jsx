@@ -8,7 +8,7 @@ import SignIn from "../Components/SignIn/SignIn"
 
 export default function Login() {
     return(
-            <div>
+            <div id="root">
                 <Nav />
                 <main className="main bg-dark">
                     <SignIn />
