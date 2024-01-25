@@ -4,6 +4,8 @@ import Login from './pages/Login'
 import User from './pages/User'
 import Home from './pages/Home'
 
+import './styles/Main.css'
+
 function App() {
 
   return (
