@@ -21,13 +21,15 @@ export default function SignIn() {
                     <label for="remember-me">Remember me</label>
                 </div>
 
-                {/*<!-- PLACEHOLDER DUE TO STATIC SITE --> 
-                <a href="./user.html" className="sign-in-button">Sign In</a> */}
-                {/* <!-- SHOULD BE THE BUTTON BELOW --> */}
-                <button className="sign-in-button">Sign In</button>
+                <a href="./user" className="sign-in-button">
+                    Sign In
+                {/*<button className="sign-in-button">Sign In</button> Button to use when Redux */} 
+                </a>
                     
                 </form>
             </section>
 
     )
 }
+
+{/* Sign In is sign out once logged */}
