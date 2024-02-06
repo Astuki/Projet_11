@@ -32,3 +32,17 @@
   max-width: 100%;
   width: 200px;
 }
+
+.button-styling{
+  border: none;
+  background: none;
+  font-weight: bold;
+  color: #2c3e50;
+  font-size: 15px;
+  font-family: "Avenir-Regular", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.button-styling:hover{
+  cursor: pointer;
+}

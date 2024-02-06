@@ -1,35 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/authThunks";
+import { useNavigate } from "react-router-dom";
 
-export default function SignIn() {
-    return(
-            <section className="sign-in-content">
+function SignIn() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate(); 
 
-                <i className="fa fa-user-circle sign-in-icon"></i>
-                <h1>Sign In</h1>
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-                <form>
+    const handleSignIn = async (e) => {
+        e.preventDefault();
+        await dispatch(loginUser(email, password, () => {
+            navigate('/user'); // redirection vers la page user
+        }));
+    };
+
+    return (
+        <section className="sign-in-content">
+            <i className="fa fa-user-circle sign-in-icon"></i>
+            <h1>Sign In</h1>
+
+            <form>
                 <div className="input-wrapper">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" />
+                    <label htmlFor="username">Username</label>
+                    <input type="text" id="username" onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="input-wrapper">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" />
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className="input-remember">
                     <input type="checkbox" id="remember-me" />
-                    <label for="remember-me">Remember me</label>
+                    <label htmlFor="remember-me">Remember me</label>
                 </div>
 
-                <a href="./user" className="sign-in-button">
+                <button type="button" className="sign-in-button" onClick={handleSignIn}>
                     Sign In
-                {/*<button className="sign-in-button">Sign In</button> Button to use when Redux */} 
-                </a>
-                    
-                </form>
-            </section>
-
-    )
+                </button>
+            </form>
+        </section>
+    );
 }
 
-{/* Sign In is sign out once logged */}
+export default SignIn;
