@@ -18,10 +18,7 @@
 .main-nav-item {
   text-decoration: none;
   margin-right: 0.5rem;
-}
-
-.main-nav-item:hover {
-  text-decoration: underline;
+  display: flex;
 }
 
 .main-nav-logo {
@@ -45,8 +42,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.button-styling:hover {
+.button-styling:hover, .user:hover {
   cursor: pointer;
+  text-decoration: underline;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-right: 10px;
+}
+
+.username {
+  font-size: 16px;
+  font-family: "Avenir-Regular", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: bold;
 }
 
 .hero {
@@ -174,6 +189,10 @@
 .header {
   color: #fff;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .transaction-button {
@@ -199,6 +218,50 @@
     width: 200px;
   }
 }
+.title-editing {
+  margin: 5px;
+}
+
+.edit-form {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  margin-top: 8px;
+}
+
+.button-container {
+  width: 15%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.save-button, .cancel-button {
+  font-size: 20px;
+  padding: 15px 30px 15px 30px;
+  border: 1px solid #00bc77;
+}
+
+.save-button:hover, .cancel-button:hover {
+  cursor: pointer;
+}
+
+.cancel-button {
+  color: #00bc77;
+  background-color: white;
+}
+
+.save-button {
+  background-color: #00bc77;
+  color: white;
+}
+
 .sign-in-button {
   display: block;
   width: 100%;

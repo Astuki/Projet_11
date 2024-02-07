@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './redux/store';
-import { checkLoggedInUser } from './redux/authThunks';
+import { checkLoggedInUser } from './redux/Auth/authThunks';
 
 
 import Login from './pages/Login';

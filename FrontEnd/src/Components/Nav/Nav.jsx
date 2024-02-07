@@ -1,17 +1,19 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../../redux/authThunks";
+import { logoutUser } from "../../redux/Auth/authThunks";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/argentBankLogo.png";
+import userImg from "../../assets/user.png";
 
 export default function Nav() {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+    const username = useSelector((state) => state.profile.username);
     const dispatch = useDispatch();
-    const navigate = useNavigate(); // import hook nagivate
+    const navigate = useNavigate();
 
     const handleSignOut = () => {
         dispatch(logoutUser());
-        navigate("/login"); // redirection après le logout
+        navigate("/login");
     };
 
     return (
@@ -26,10 +28,16 @@ export default function Nav() {
             </a>
             <div>
                 {isAuthenticated ? (
-                    <button className="main-nav-item button-styling" onClick={handleSignOut}>
-                        <i className="fa fa-user-circle"></i>
-                        Sign Out
-                    </button>
+                    <div className="main-nav-item">
+                        <div className="user">
+                            <img src={userImg} alt="Img De Base d'un utilisateur"/>
+                            <p className="username">{username}</p>
+                        </div>
+                        <button className="button-styling" onClick={handleSignOut}>
+                            <i className="fa fa-user-circle"></i>
+                            Sign Out
+                        </button>
+                    </div>
                 ) : (
                     <a className="main-nav-item" href="/login">
                         <i className="fa fa-user-circle"></i>
