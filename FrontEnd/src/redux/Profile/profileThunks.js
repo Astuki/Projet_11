@@ -1,5 +1,3 @@
-// profileThunks.js
-
 import { setProfile, updateUsernameStart, updateUsernameSuccess, updateUsernameFailure } from './profileSlice';
 
 export const fetchUserProfile = (token) => async (dispatch) => {

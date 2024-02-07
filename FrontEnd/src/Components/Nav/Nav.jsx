@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/Auth/authThunks";
+import { fetchUserProfile } from "../../redux/Profile/profileThunks";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/argentBankLogo.png";
 import userImg from "../../assets/user.png";
@@ -8,8 +9,15 @@ import userImg from "../../assets/user.png";
 export default function Nav() {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const username = useSelector((state) => state.profile.username);
+    const token = useSelector((state) => state.auth.token); 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated && token) {
+            dispatch(fetchUserProfile(token));
+        }
+    }, [dispatch, isAuthenticated, token]);
 
     const handleSignOut = () => {
         dispatch(logoutUser());
@@ -30,7 +38,7 @@ export default function Nav() {
                 {isAuthenticated ? (
                     <div className="main-nav-item">
                         <div className="user">
-                            <img src={userImg} alt="Img De Base d'un utilisateur"/>
+                            <img src={userImg} alt="Img De Base d'un utilisateur" />
                             <p className="username">{username}</p>
                         </div>
                         <button className="button-styling" onClick={handleSignOut}>
