@@ -15,7 +15,7 @@ paths:
       tags:
         - Accounts and Transactions Module
       summary: Account transactions
-      description: API for retrieving list of transactions associated with an account
+      description: API call for retrieving list of transactions associated with an account
       security:
         - Bearer: []
       parameters:
@@ -38,8 +38,40 @@ paths:
         '500':
           description: Internal Server Error
 
+
+
+
+
   user/{userID}/account/transactions/{transactionID}:
     get:
+      tags:
+          - Specific Transaction details Module
+        summary: Account transactions details
+        description: API call for retrieving the details of a transaction
+        security:
+          - Bearer: []
+        parameters:
+          - in: path
+            name: accountID
+            description: ID of an account
+            required: true
+            type: string
+        responses:
+          '200':
+            description: The Details have been retrieved successfully 
+            schema: 
+              type: array
+              items:
+                $ref: '#/definitions/TransactionsResponse'
+          '401':
+            description: Unauthorized user
+          '404': 
+            description: Account not found
+          '500':
+            description: Internal Server Error
+
+
+
 
 
   user/{userID}/account/transactions/{transactionID}/note/{noteID}:
@@ -47,7 +79,7 @@ paths:
       tags:
         - Accounts and Transactions Module
       summary: Modify transaction's note
-      description: API for modifying a note of a transaction
+      description: API call for modifying a note of a transaction
       security:
         - Bearer: []
       parameters:
@@ -79,12 +111,13 @@ paths:
         '500':
           description: Internal Server Error
 
+
   user/{userID}/account/transactions/{transactionID}/category:
     put:
       tags:
         - Accounts and Transactions Module
       summary: Update transaction's category
-      description: API for updating category of transaction
+      description: API call for updating category of transaction
       security:
         - Bearer: []
       parameters:
@@ -110,6 +143,3 @@ paths:
           description: Transaction not found
         '500': 
           description: Internal Server Error
-
-
-un 2nd get pour le menu déroulant
