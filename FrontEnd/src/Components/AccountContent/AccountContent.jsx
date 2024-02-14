@@ -24,6 +24,7 @@ export default function AccountContent() {
     firstName: "",
     lastName: "",
   });
+  const [validationError, setValidationError] = useState(null);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -39,8 +40,20 @@ export default function AccountContent() {
   };
 
   const handleSaveClick = () => {
+    if (!formData.username.trim()) {
+      setValidationError("Votre Username ne peut pas être vide");
+      return;
+    }
+
+    const usernameRegex = /^[a-zA-Z]{3,}$/;
+    if (!usernameRegex.test(formData.username)) {
+      setValidationError("Votre Username doit contenir plus de 3 lettres, aucun chiffres ou caractères spéciaux");
+      return;
+    }
+
     dispatch(updateUsername(formData.username, token));
     setIsEditing(false);
+    setValidationError(null); // Clear erreur validation avec Regex
   };
 
   const handleInputChange = (e) => {
@@ -49,6 +62,7 @@ export default function AccountContent() {
       ...prevData,
       [name]: value,
     }));
+    setValidationError(null);
   };
 
   return (
@@ -102,6 +116,9 @@ export default function AccountContent() {
                 Save
               </button>
             </div>
+            {validationError && (
+                <p className="error-message">{validationError}</p>
+              )}
           </>
         ) : (
           <>
