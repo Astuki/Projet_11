@@ -37,7 +37,7 @@ export const loginUser = (email, password, navigation) => async (dispatch) => {
         }
 
     } catch (error) {
-        dispatch(loginFailure(error.message));
+        dispatch(loginFailure('Username ou mot de passe Incorrect(s)'));
     }
 };
 
