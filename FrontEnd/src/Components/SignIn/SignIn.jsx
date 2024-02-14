@@ -9,11 +9,31 @@ function SignIn() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [missingInputError, setMissingInputError] = useState(false);
+    const [incorrectCredentialsError, setIncorrectCredentialsError] = useState(false);
+
+    const [, forceUpdate] = useState();
 
     const handleSignIn = async (e) => {
         e.preventDefault();
+
+        if (!email || !password) {
+            setMissingInputError(true);
+            setIncorrectCredentialsError(false);
+            return;
+        }
+
+        setMissingInputError(false);
+        setIncorrectCredentialsError(false);
+
+        
         await dispatch(loginUser(email, password, () => {
-            navigate('/user'); // redirection vers la page user
+            navigate('/user'); // Redirection vers page User
+        }, () => {
+            setTimeout(() => {
+                setIncorrectCredentialsError(true);
+                forceUpdate(); 
+            }, 0);
         }));
     };
 
@@ -39,6 +59,10 @@ function SignIn() {
                 <button type="button" className="sign-in-button" onClick={handleSignIn}>
                     Sign In
                 </button>
+
+                {/* Error messages */}
+                {missingInputError && <p className="error-message">Ecrivez un Username et un mot de passe.</p>}
+                {incorrectCredentialsError && <p className="error-message">Username ou mot de passe Incorrect.</p>}
             </form>
         </section>
     );
