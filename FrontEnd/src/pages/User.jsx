@@ -3,7 +3,7 @@ import React from "react";
 import Nav from "../Components/Nav/Nav";
 import Footer from "../Components/Footer/Footer";
 import AccountContent from "../Components/AccountContent/AccountContent";
-import Transactions from "../Components/transactions/transactions";
+import BankAccount from "../Components/BankAccount/BankAccount";
 
 import TransactionData from "../datas/TransactionData";
 
@@ -14,7 +14,7 @@ export default function User() {
                 <main className="main bg-dark">
                     <AccountContent />
                     {TransactionData.map((account, index) => (
-                    <Transactions key={index} {...account} />
+                    <BankAccount key={index} {...account} />
                     ))}
                 </main>
                 <Footer />
