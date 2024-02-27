@@ -201,7 +201,7 @@ paths:
             $ref: '#/definitions/TransactionNoteAndCategory'
       responses:
         '200':
-          description: Note and category modified successfully
+          description: Note or category modified successfully
           schema:
             $ref: '#/definitions/TransactionResponseNoteAndCategory'
         '401':
