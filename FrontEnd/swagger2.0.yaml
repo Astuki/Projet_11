@@ -124,14 +124,19 @@ paths:
     get:
       tags:
         - Accounts and Transactions Module
-      summary: List of transactions assiociated with an account
-      description: API for retrieving list of transactions assiocated with an account
+      summary: List of transactions assiociated with an account for the current Month
+      description: API for retrieving list of transactions assiocated with an account for the current Month
       security: 
         - Bearer: []
       parameters:
         - in: path
           name: accountID
           description: ID of an account
+          required: true
+          type: string
+        - in: query
+          name: currentMonth
+          description: Filter transactions for the current month
           required: true
           type: string
       responses:
@@ -179,7 +184,7 @@ paths:
           description: Transaction not found
         '500':
           description: Internal Server Error
-  /transactions/{transactionID}/note_and_category:
+  /transactions/{transactionID}:
     put:
       tags:
         - Accounts and Transactions Module
@@ -194,7 +199,7 @@ paths:
           required: true
           type: string
         - in: body
-          name: note_and_category
+          name: Note And Category
           description: Modify a transaction's note or category
           required: true
           schema:
